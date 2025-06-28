@@ -14,4 +14,4 @@ jobs:
       - run:  |
           echo "Hello world from ${{github.actor}}."
           echo "Current branch is ${{github.ref}}."
-          echo "Show me the environment variable = ${{ vars.DEV_EXAMPLE_VARIABLE }}."
+          echo "Show me the environment variable = " ${{ vars.DEV_EXAMPLE_VARIABLE }}
