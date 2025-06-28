@@ -15,4 +15,3 @@ jobs:
           echo "Hello world from ${{github.actor}}."
           echo "Current branch is ${{github.ref}}."
           echo "Show me the environment variable = ${{vars.EXAMPLE_VARIABLE}}."
-    }}
