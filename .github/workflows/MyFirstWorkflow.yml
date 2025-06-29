@@ -6,13 +6,27 @@ on:
     branches:
       - main
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   first_job:
     name: My first job
     runs-on: ubuntu-latest
     environment: dev
     steps:
+      - uses: actions/checkout@v3
+
+      - name: Login to Azure via OIDC
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          auth-type: 'oidc'
+
       - run:  |
           echo "Hello world from ${{github.actor}}."
           echo "Current branch is ${{github.ref}}."
-          echo "Show me the environment variable value = ${{vars.ENVIRONMENT_VARIABLE_EXAMPLE}}."
+          echo "Show me the environment variable value = ${{ vars.ENVIRONMENT_VARIABLE_EXAMPLE }}."
