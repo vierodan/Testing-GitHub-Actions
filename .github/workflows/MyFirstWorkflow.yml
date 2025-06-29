@@ -10,8 +10,11 @@ jobs:
   first_job:
     name: My first job
     runs-on: ubuntu-latest
+    environment: dev
     steps:
+      - name: Set environment variable
+        run: echo "DEV_EXAMPLE_VARIABLE=example_value" >> $GITHUB_ENV
       - run:  |
           echo "Hello world from ${{github.actor}}."
           echo "Current branch is ${{github.ref}}."
-          echo "Show me the environment variable = ${{env.DEV_EXAMPLE_VARIABLE}}."
+          echo "Show me the environment variable = ${{env.ENVIRONMENT_VARIABLE_EXAMPLE}}."
