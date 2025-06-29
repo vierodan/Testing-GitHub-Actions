@@ -12,8 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     steps:
-      - name: Set environment variable
-        run: echo "DEV_EXAMPLE_VARIABLE=example_value" >> $GITHUB_ENV
       - run:  |
           echo "Hello world from ${{github.actor}}."
           echo "Current branch is ${{github.ref}}."
